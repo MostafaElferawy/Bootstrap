@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      /* navbar */
+        .nav-item a:active {
+            color: aqua;
+            border-top: 1px aqua solid;
+        }
+        .nav-link:hover{
+          border-top:3px  #0af0c7 solid;
+          font-weight:bold;
+        }
+        section {
+            color: #7a90ff;
+            padding: 2em 0 8em;
+            min-height: 100vh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        .pricing {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-justify-content: center;
+            justify-content: center;
+            width: 100%;
+            margin: 0 auto 3em;
+        }
+        
+        .pricing-item {
+            position: relative;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: stretch;
+            align-items: stretch;
+            text-align: center;
+            -webkit-flex: 0 1 330px;
+            flex: 0 1 330px;
+        }
+        
+        .pricing-action {
+            color: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        
+        .pricing-action:focus {
+            outline: none;
+        }
+        
+        .pricing-feature-list {
+            text-align: left;
+        }
+        
+        .pricing-palden .pricing-item {
+            font-family: 'Open Sans', sans-serif;
+            cursor: default;
+            color: #84697c;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
+            border-radius: 20px 20px 10px 10px;
+            margin: 1em;
+        }
+        
+        @media screen and (min-width: 66.25em) {
+            .pricing-palden .pricing-item {
+                margin: 1em -0.5em;
+            }
+            .pricing-palden .pricing__item--featured {
+                margin: 0;
+                z-index: 10;
+                box-shadow: 0 0 20px rgba(46, 59, 125, 0.23);
+            }
+        }
+        
+        .pricing-palden .pricing-deco {
+            border-radius: 10px 10px 0 0;
+            background: linear-gradient(135deg,#4097f9,#0af0c7);
+            padding: 4em 0 9em;
+            position: relative;
+        }
+        
+        .pricing-palden .pricing-deco-img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 160px;
+        }
+        
+        .pricing-palden .pricing-title {
+            font-size: 0.75em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #fff;
+        }
+        
+        .pricing-palden .deco-layer {
+            -webkit-transition: -webkit-transform 0.5s;
+            transition: transform 0.5s;
+        }
+        
+        .pricing-palden .pricing-item:hover .deco-layer--1 {
+            -webkit-transform: translate3d(15px, 0, 0);
+            transform: translate3d(15px, 0, 0);
+        }
+        
+        .pricing-palden .pricing-item:hover .deco-layer--2 {
+            -webkit-transform: translate3d(-15px, 0, 0);
+            transform: translate3d(-15px, 0, 0);
+        }
+        
+        .pricing-palden .icon {
+            font-size: 2.5em;
+        }
+        
+        .pricing-palden .pricing-price {
+            font-size: 5em;
+            font-weight: bold;
+            padding: 0;
+            color: #fff;
+            margin: 0 0 0.25em 0;
+            line-height: 0.75;
+        }
+        
+        .pricing-palden .pricing-currency {
+            font-size: 0.15em;
+            vertical-align: top;
+        }
+        
+        .pricing-palden .pricing-period {
+            font-size: 0.15em;
+            padding: 0 0 0 0.5em;
+            font-style: italic;
+        }
+        
+        .pricing-palden .pricing__sentence {
+            font-weight: bold;
+            margin: 0 0 1em 0;
+            padding: 0 0 0.5em;
+        }
+        
+        .pricing-palden .pricing-feature-list {
+            margin: 0;
+            padding: 0.25em 0 2.5em;
+            list-style: none;
+            text-align: center;
+        }
+        
+        .pricing-palden .pricing-feature {
+            padding: 1em 0;
+        }
+        
+        .pricing-palden .pricing-action {
+            font-weight: bold;
+            margin: auto 3em 2em 3em;
+            padding: 1em 2em;
+            color: #fff;
+            border-radius: 30px;
+            background: linear-gradient(135deg,#a93bfe,#584efd);
+            -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+        }
+        
+        .pricing-palden .pricing-action:hover,
+        .pricing-palden .pricing-action:focus {
+            background: linear-gradient(135deg,#fd7d57,#f55d59);
+        }
+        
+        .pricing-palden .pricing-item--featured .pricing-deco {
+            padding: 5em 0 8.885em 0;
+        }
+
+        .plan{
+          margin-top: 8rem;
+        }
+        .card-img-top{
+          height: 15em;
+        }
+
+        /*footer*/
+      .col_white_amrc { color:#FFF;}
+      footer { width:100%; background-color:#263238; min-height:250px; padding:10px 0px 25px 0px ;}
+      .pt2 { padding-top:40px ; margin-bottom:20px ;}
+      footer p { font-size:13px; color:#CCC; padding-bottom:0px; margin-bottom:8px;}
+      .mb10 { padding-bottom:15px ;}
+      .footer_ul_amrc { margin:0px ; list-style-type:none ; font-size:14px; padding:0px 0px 10px 0px ; }
+      .footer_ul_amrc li {padding:0px 0px 5px 0px;}
+      .footer_ul_amrc li a{ color:#CCC;}
+      .footer_ul_amrc li a:hover{ color:#fff; text-decoration:none;}
+      .fleft { float:left;}
+      .padding-right { padding-right:10px; }
+
+      .footer_ul2_amrc {margin:0px; list-style-type:none; padding:0px;}
+      .footer_ul2_amrc li p { display:table; }
+      .footer_ul2_amrc li a:hover { text-decoration:none;}
+      .footer_ul2_amrc li i { margin-top:5px;}
+
+      .bottom_border { border-bottom:1px solid #323f45; padding-bottom:20px;}
+      .foote_bottom_ul_amrc {
+        list-style-type:none;
+        padding:0px;
+        display:table;
+        margin-top: 10px;
+        margin-right: auto;
+        margin-bottom: 10px;
+        margin-left: auto;
+      }
+      .foote_bottom_ul_amrc li { display:inline;}
+      .foote_bottom_ul_amrc li a { color:#999; margin:0 12px;}
+
+      .social_footer_ul { display:table; margin:15px auto 0 auto; list-style-type:none;  }
+      .social_footer_ul li { padding-left:20px; padding-top:10px; float:left; }
+      .social_footer_ul li a { color:#CCC; border:1px solid #CCC; padding:8px;border-radius:50%;}
+      .social_footer_ul li i {  width:20px; height:20px; text-align:center;}
+
+    </style>
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Bootstrap Day 2</title>
+</head>
+<body>
+    
+    <!-- nav bar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <a class="navbar-brand" href="#">
+            <img src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/creative-logo-or-icon-design-template-d6cdd0b35fc4b69ddc3288a7abd52ff3_screen.jpg?ts=1578260767" alt="" style=" width: 5em; height: 4em;" >
+
+          </a>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">pro</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="#">VIP</a>
+            </li>
+          
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+      <!-- slider -->
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" >
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuZe5PuTGXYxVB25FmXTZY2S64m7GkFwAwvrHjw4KqEQ&s" class="d-block w-100 " height="500em" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzngRO_u43krRPBQuQXeWAEFWX2KyB7oWbn7fFnTUP&s" class="d-block w-100 " height="500em" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnzz9IUQSPHMQ-Utcv_giwzGp0wzig_Smcuk_jqlLehQ&s" class="d-block w-100 " height="500em" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> 
+
+      
+      <div class="container">
+        <!-- curds -->
+        <div class="col-lg-4 text-center w-100 mt-5">
+          <h1>Fetcures <span class="text-info">& </span> Surveces </h1>
+      </div>
+
+        <div class="carousel-inner text-center row" style="margin-top:1.5em;" >
+            <div class="col-lg-4 text-center w-30 bg-info">
+                <img class="rounded-circle  " style="margin:1.5em; width:25%" src="https://img.icons8.com/ios/2x/facebook-like.png" alt="">
+                <h4 class="text-center">Spetial Surveces</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Fugiat eum soluta sed dolorum excepturi error sunt minima accusamus ab. Cum, officiis architecto amet itaque libero repellat quasi ex facilis illo.</p>
+            </div>
+            <div class="col-lg-4 text-center w-30 bg-info text-opacity-25 border-start border-end border-primary" style="border-top: 1px gray solid ">
+                <img class="rounded-circle " style="margin:1.5em; width:25%" src="https://img.icons8.com/ios/2x/stellar.png"  alt="">
+                <h4 class="text-center">Quick & Super Fast</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Fugiat eum soluta sed dolorum excepturi error sunt minima accusamus ab. Cum, officiis architecto amet itaque libero repellat quasi ex facilis illo.</p>
+            </div>
+            <div class="col-lg-4 text-center w-30 bg-info">
+                <img class="rounded-circle  " style="margin:1.5em; width:25%;" src="https://img.icons8.com/ios/2x/chat.png"  alt="">
+                <h4 class="text-center">Custoumer Suport</h4>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                    Fugiat eum soluta sed dolorum excepturi error sunt minima accusamus ab. Cum, officiis architecto amet itaque libero repellat quasi ex facilis illo.</p>
+            </div>
+          </div>
+          <!-- plan -->
+          <div class="plan">
+            <div class="col-lg-4 text-center w-100 ">
+                <h1>Hosto <span class="text-info">Plans</span> & <span class="text-info">Pricing</span></h1>
+                <span>officiis architecto amet itaque libero repellat quasi ex facilis illo</span>
+            </div>
+            <section>
+                <center>
+                  <div class="pricing pricing-palden">
+                      <div class="pricing-item features-item ja-animate" data-animation="move-from-bottom" data-delay="item-0" style="min-height: 497px;">
+                          <div class="pricing-deco">
+                              <svg class="pricing-deco-img" enable-background="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xml:space="preserve" y="0px">
+                                  <path class="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6"></path>
+                                  <path class="deco-layer deco-layer--2" d="M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z" fill="#FFFFFF" opacity="0.6"></path>
+                                  <path class="deco-layer deco-layer--3" d="M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716H42.401L43.415,98.342z" fill="#FFFFFF" opacity="0.7"></path>
+                                  <path class="deco-layer deco-layer--4" d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="#FFFFFF"></path>
+                              </svg>
+                              <div class="pricing-price"><span class="pricing-currency">$</span>29
+                                  <span class="pricing-period">/ mo</span>
+                              </div>
+                              <h3 class="pricing-title">Freelance</h3>
+                          </div>
+                          <ul class="pricing-feature-list">
+                              <li class="pricing-feature">1 GB of space</li>
+                              <li class="pricing-feature">Support at $25/hour</li>
+                              <li class="pricing-feature">Limited cloud access</li>
+                          </ul>
+                          <button class="pricing-action">Choose plan</button>
+                      </div>
+                      <div class="pricing-item features-item ja-animate pricing__item--featured" data-animation="move-from-bottom" data-delay="item-1" style="min-height: 497px;">
+                          <div class="pricing-deco" style="background: linear-gradient(135deg,#a93bfe,#584efd)">
+                              <svg class="pricing-deco-img" enable-background="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xml:space="preserve" y="0px">
+                                  <path class="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6"></path>
+                                  <path class="deco-layer deco-layer--2" d="M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z" fill="#FFFFFF" opacity="0.6"></path>
+                                  <path class="deco-layer deco-layer--3" d="M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716H42.401L43.415,98.342z" fill="#FFFFFF" opacity="0.7"></path>
+                                  <path class="deco-layer deco-layer--4" d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="#FFFFFF"></path>
+                              </svg>
+                              <div class="pricing-price"><span class="pricing-currency">$</span>59
+                                  <span class="pricing-period">/ mo</span>
+                              </div>
+                              <h3 class="pricing-title">Business</h3>
+                          </div>
+                          <ul class="pricing-feature-list">
+                              <li class="pricing-feature">5 GB of space</li>
+                              <li class="pricing-feature">Support at $5/hour</li>
+                              <li class="pricing-feature">Full cloud access</li>
+                          </ul>
+                          <button class="pricing-action">Choose plan</button>
+                      </div>
+                      <div class="pricing-item features-item ja-animate" data-animation="move-from-bottom" data-delay="item-2" style="min-height: 497px;">
+                          <div class="pricing-deco">
+                              <svg class="pricing-deco-img" enable-background="new 0 0 300 100" height="100px" id="Layer_1" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" x="0px" xml:space="preserve" y="0px">
+                                  <path class="deco-layer deco-layer--1" d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="#FFFFFF" opacity="0.6"></path>
+                                  <path class="deco-layer deco-layer--2" d="M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z" fill="#FFFFFF" opacity="0.6"></path>
+                                  <path class="deco-layer deco-layer--3" d="M43.415,98.342c0,0,48.283-68.927,109.133-68.927c65.886,0,97.983,67.914,97.983,67.914v3.716H42.401L43.415,98.342z" fill="#FFFFFF" opacity="0.7"></path>
+                                  <path class="deco-layer deco-layer--4" d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="#FFFFFF"></path>
+                              </svg>
+                              <div class="pricing-price"><span class="pricing-currency">$</span>99
+                                  <span class="pricing-period">/ mo</span>
+                              </div>
+                              <h3 class="pricing-title">Enterprise</h3>
+                          </div>
+                          <ul class="pricing-feature-list">
+                              <li class="pricing-feature">10 GB of space</li>
+                              <li class="pricing-feature">Support at $5/hour</li>
+                              <li class="pricing-feature">Full cloud access</li>
+                          </ul>
+                          <button class="pricing-action">Choose plan</button>
+                      </div>
+                      
+                  </div>
+                  </center>
+              </section>
+            <div>
+
+            </div>
+          </div>
+          <!-- productes -->
+    <div class="productes my-0">
+      <div class="col-lg-4 text-center w-100 " style="margin-bottom: 5em; text-align: center;">
+        <h1 class="text-center"> Key Feture Of <span class="text-info">Hosto</span></h1>
+    </div>
+    
+    <section style="background-color: #eee; padding: 0em;">
+      <div class="container p-3">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6 col-xl-4 m-y-2">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp"
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWUorXrTLjz5SWATtDMsDsuktbRJvjWf_Ivg&usqp=CAU"
+              class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="data:image/jpeg;base64,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"
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBUVFRgSEhEYGBgYGBgYGBkYGBgYGBgYGRgZGRgYGBgcIS4lHB4rHxgYJjgmKy8xNTU1GiQ7QDszPy41NTEBDAwMEA8QGhISHzEkISQ0NTQ0NDQxNDQ0NDQ0MTY0NDQ0NDQxNDQ0NDQxNDQ0NDQ0NDQ0NDQxNDQ0NDQ0NDQxNP/AABEIALcBEwMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAACAAEDBAYFBwj/xABEEAACAQIDAwYJCQgDAAMAAAABAgADEQQSIQUxQQYTIlFhcQcyQlKBkaGxwRRicoKSssLR8BUjM1OTotLhFiRDRKPx/8QAGQEAAwEBAQAAAAAAAAAAAAAAAAECAwQF/8QAKxEAAgIABQMEAQQDAAAAAAAAAAECEQMSITFRBBNBFDJhcSIFIzPwQlKh/9oADAMBAAIRAxEAPwCVcRUHF/ssZIuLqfP/AKbH4Sou0qvnSZNsVRxHqE815jpqJKca/HP6abD4SRNpuOI+spEiXblUeb6hJk2/V81PVJblx/0rLH+oI7ZsCWekABcklhYDUzhP4SaCkgU3YDylUAHtF3Bt3gTr7U2zUqUK9PKvSo1V3ecjL8Z4hOjAhnTcjLEqNUeu0/CVhjvRx3j8iZYp+EfB8cw9DfBTPKE2cxXMDTtkz61qSm12FsrMCW6J6I11XTUXQ2ZU4GmdVXStROrajy93Wdw42m/Yj8meY9cTwhYA+MfWrn8EmHLLZj+NzZ+kg/Es8gOyK2UtkWwbKbVKZsc2XcGva/Hdx3StiMI6MUdbMuhFxppfh3w7C+RZj2ocoNktvWh9mkPiIY2nsZt5oj6yL9154ZzZ6osh6jH2UGY9xxm0sN0PkmIQID0qd1ZSNekrXNjruv8A74LkHcVtw1B04cZ5XlPUfVFlPVDtgmemVaZNjYmxvpaOjFWL82bk3O+eZW74a1mG5mHcSIu38jzWehVEuScjC4YHQ+Vv4SnQwWQMqh+kFGoOmUWvu475jRjqo3VX+035yQbUrjdiKg+u/wCceR8hZs1okDcfUZJTSY1NuYkbsQ/pa/vk6cp8WN2Ib7KH3rF2ws1SjoKPOI9wmldc+Ocp5GQa6fw0UN7UM83TlljR/wC4PfTpH8MuUeX+NU3zUyes0kv7LS4qjGcXI+gMOtlAPD85Q2k19B1fEH3AzzXkn4RK9WutDEhMr3AdcyFWAJF9SCDa27iJ6Gu0aR8Z0OnlE9X0Zo5/Bg4OJWxDA4igAdDRqsO569Fb+2Yzar3cn5zn1tN+1fDkq+emHVVVSDqEV1fICToLoPVPO8UenY9Z+8Zx4tuTfJ1YJfw2hQng2b7CO/4Zz03S6u/uSqf/AKXHxlIT0f05fi38nH1z/NL4CjWiEcT0jgYDJK1VJbcyrVMJDiUqtMSBqYlipI2nPI3iQc0IoUUzLN2lOj2+z4SZKOH439RPunnJL+cfXFmfzzPNf6fPk9FdbDg9MXC4Y+f9h/yki4LDfP8AsP8A4zy/O/nmNnfzzJf6dP8A2H6+HB6quzcO2nT108R+P1Z8+1FKkqd4JB7xpNcHfzzMrils7DqZveZeH00sG7d2D6iOLsqolVdBFklrDU7qp7PdD5menGNpM53LUpZeyHSoMxsiknqAvLRoybAo6uMhKtY2IbIRu8rhxikqTaBStlP5DU/lP6EY+4RJgqh8Wk57kY+4TQKK4OlRxbUWxCdVtCD1aTpciaBfG0UqLekzujqzDUmk5TdY+MAdOqY53wXRjjs6t/IqfYf8o3yGp/Kf7D/lPo1+T2GvphgR9OoPcYC8nMKd+HI+vV/yk934A+c2wj/y3+w35SMUH4o32Wn0gOTWFAIFNhff06v+UD/i+F4U2/qVP8oOfwM+cSjDeD6jA9M+kP8Ai2G8x/6j/nG/4th+p/ttDOuAPnHTrHsiK9k+kv8Aj1C1rNpbzTu7Ss8P5YYEU8biUS+VahI+sqv+KVFxk6oTdHBpVygsFTffpIjnhpdlOnRGnf1mSfLTe5pUjoB/DUDeDuW2untPXBakYsnXK7aDMPsMH5TRA3mqi/aYL8Z61+xqvmN6jPIMM5SsrC11dWFxcXBBFxxnoA5Q4gf+dD+ik5+05N14FPEUaO+2xKx/829RgnYFc76baa3tOQnKfEfy6P8ASWXqHKave7JS9CKD7oeklLwZ+pUfJLWovTzCohU8251FvGdE06/HM5wlnFbVqVbhytjwCICBcG2YKDa6g7+ErAzv6XBeFFp8nH1GKsSSa4HEKMDHnVRzkbSpVMs1DKlUyJFRKzmA0JjAYzCR0IGKDFMyiyaMXMy3aNadRiVeZi5mWssVoCKgozI7Zp5azjtB9YB+M3Npj+U6Wrk+cqn2W+E5+qX4r7OnpX+b+izsqlmpA9rD2/7lv5NFyWp5qTdjn2qs7QwvZHhu4o0npJnHGFlnZbiniKLA+WoOoGhNjqQQN/VL74IkaGV6+z8i5r6gg36u2OSuLQoSakmvB0NrVzndFdMyu2UtiMOQVzHyQisTa1rmRbAxrpjcMGZCOepAlCrCzuF8ZSRxkuId0LK2KdX62q1EHSIbWlzNxv8AOFzrORRrlayVHfMVqI5Ykm+Rwb3OvDjOVqrXB0O7d7nvW0azoAVW46RPZa3aO2Z3lDyibDUGxD2ZVKrZblruQALFgOIO/dNBtrFrTVQ6kio/Ni1tCyO1zfhZDM9jdkYbG0BTdyBmV2KELdkXKM2YG+hHqHCcsk825pF6GZ2b4QmxDmnSUqQL9O+ouBplc9ftlvHbfxasFayqd5BdSBw8Y6a/GWtn+D7C0GFZKzXUG96iWK8b2UaXt7IsLsenTV6GdHIsxChrDMysPGJuSLkm/lHQDQZztIqLjZZ5ObQxD1LVldQyPlDuG1UX3An3y7TGIIxCfvQXp1TTYlrLUBqKMj3IS/QIAIAsCALmWaOEbPRqJ4ozZ9RudCqnt6RGnbOjRUDe6m+m8Xv2TSCdEuS4Mzyep4tKic/zzg5w7F2ekOgWRkDEm1wFv17tCZheXeF/7+IPnGmw/o0wfaDPYaCAeUDft198865dYf8A7hNt9OmfvL+Gb4GkjPFd61Rgmwg6pE2E7J32w0jeiACSQAN5OgHpnZoc9mIx1PLUI7j7BN3zcxm22U1SVYMLDUai+vGbegbop61U+sCT0/vkT1XtiwFpyVUhCOJ2o4mJBJIIjwJCEe8ERzKERVDKdUyzVMpVDMZmkSImA0IyNjMJHQhrxQbxSCjsmNHitOowGj2ijxpCGmV5Wpaoh60t6ifzE1dpnOWC6Um+kPukfGY9Qv22bdO/3Ec7Y+0Gpqyq1gSDw7Z1sHtRwS2cnW5V9R/r0WnN5MbN+UVGpgnRc3RtcgMBx3eMJtsNyWRNWCjtY5j/AKmOE/xR2TSs5+H2y5/8Q3cSo7dTcS3i8SXRgtM3I6729k6nyahT8Y5jKWO2soVlpqF03ga+uU26IpFrlVmYkq7BXppUYE4khriwBGUob2XpEjWY6puI7DNXtKjfDUahZnDYdcxKYhgmW9hdXCADrYEaHTfMmVM5Vsas+iqRFSmjb8yK41I1K3G49s87blE3NFymGYfug4NOuqgvTrMwyl2zWdKVvrbja2z5O174HDuTYihSudNCqKp3kDgeMj+QUbWC0gDvypSt0eJsTuv7ZjJN7FxfJRAwy0FxXNoqlVJa2QDOQpJ16Otr68JWxW0UAUKpKsgZSuo6S3HG9rzsV9nU3Q0zVYIbCydG2twFKDo7uEh/Y1A26VQkKFBs5Nhci5trM5Rk9i4uPlj4HaSHJT1ucg3aA5l09+6ZbZvI2pQxKPQ5jmlqK56bJUP7xXYZMjBsoUhRmGhmxw2zKYIZc4seIK6ix3MolpEQEnPY3PlAcd3dLjF/5EyaXtOVhdnMtVWLrZT0QDrc6Pw6gvp9EwnhW2k+HxdJkCsr0ACGHFHfcRqNGE9Bxm1cPQfJUdg+VX0ViMrsyg5gLb1Ol+qec+G+l08K3WtYfZNM/ilYUVB1EUm5e4xlTlFVfxcq34AWI7ib6/ruoV8U7/xGY9WYk++c7UQ0rEfrSdma9zPKlsR4g6+ib/ZpvRpn5ifdEwFdgSNLTdbGa9CmfmgerT4Sun97MOr9i+y8IQMAR53HnsIGODAj3gIO8RMEGMzSgIarSnUMsVWlNzMJs2ghiZGxjsZGxnPI1Q14oN4pBod0xRzGnYco8eMI8pEsU4fK1f3SnqcD1g/lO5OXylW9Bj1FT7QPjIxlcH9GmC6nH7OTyIxJTEdHeyOv3W/DNtVeo3WJ53yexQpYhKrAkKWuBa+qsOJHXNyOUtE70qDuVD+OceDsehPcI4RjG/ZJbfJV5Q4fgH+sP8TEdtI2grhB2I9/XaaNEWKnsllpU6jKXBzogZUdVKORZVZ1y31ueNhppecnG0WVruirmvohWwta4spOX0zpLicIcP06lI1RXbWoa2ZqZS98qEaZtJwsVikJ6ARQLjoFyG10PTZj7pzvc0PZeQ1QPgKN+AdD3LUcD2WnbWihsQiniDYH2zzrkTyxweHwvNYiuUcPUsop1XurWIN1QjeW9U6beEHZi/8ApUbupVPiombTGbHmE382mlvJG8buENqqjew9c8+xvhNwN+guJI08Wkg3drVBw7JBU8K+EuSuFxBN76lF19DmJZtbQUeh18WieM4HRL245F3tbq3esQWKEm/Hv468D2zzDG+FmmylRs92U28auovY3B/htuIld/C83k7PTdbpVS3ZwQR5ZDN/t7ZmHqFXqK5BUIAgSxGZmAOZSd5vfsFpkfDdRvSw1XqqVF+2qn8Ez+M8K2IcZRg8MB1EVT911/RnD5TctcTjkSlXWkFRsy82rKb5SupZjpZjM8OGKsRuVVpRbacUvJmyY0cmMZ1Mgjebfk+3/XTszD+5piHmw5Nv+4HYxHtv8ZfT/wAj+jDqv419nXBhXkd4rz0DziW8V5HeINARIDGdoIaA5gFENVpUYyeq0rEznmzeCExkTGExkbTGRohoo14pBoaCKNeKdqONhCPAvCBlolhSltpc1CoPm3+yQ3wlu8ixgzU3XrVx61MJq4tfBUHUk/k88pGzDvE6Yecm8vc6OuebhSqz1pItip2xxXI4ykaw6xNByd27haKVExOHWrnV1UlFZlLLZWUtuIOvr42m2aPJm014s5hxPGEMQToBr1Aa/rUTQ0OXFGm6PTwajLTZDayt0mRuixDDySt7DRja0rpy6K5AmGRQlVqgUaLlYtdFHk9FitxwJ01k5oW7Y3F+Ecl6dWxPNPYHKTkawYmwUm2jXIFjrrC/ZeJZXcYaplpjNUYoQEBFwWvu017pbqctq1nVKVNBUqJVtZjkZOby5bnrpKTfjfdBxXLzG1OfzVF/7KLTq2ppYoodQoFtNHYX37tdBMu5q9jTKqXJHX5K45S4fCuDTpiq4JXo0yHIY6/MfQa9E6SRuR2MBymiLlGcBWRicvjLZTow4jhK78tMezFzimDFFpEhUByLmKrcLwzt29Iyi+3cSxVmxFTMq5FbOQwQ71BBvY8evjeSpq9dhOLrTc1VPweYrUM1MHmXrLZmbMq7wlhbNcqNbWzr1zl4jko1JM2Iqc2xoNWRRTdy2VrFGK6LvQltQM3YZwfllVuiHY3BWwJ1U2JWw4XA07BJU2PiCehhqzC+hWm5v1HQSVJrV6gk6Sb1NRiOSGFpirn2tSJSglVAFHTZi90ADnN4i2sbnnFJAtY1sfszZyo5p4t2dVugzJlZst7EBL2vpoePCcyhyRxzajCVB9IBD6nIl6h4Pse2+iq/SqJ+EmNS02KdXwVsfSwKqvM1XclGJzAgK/QygdEXGrX+iOucHMOubaj4McWfGq0FHHpOT6gnxnRo+Cdj42NUfRpFvewjcpPwQsq0uzzZzNTyYb90R1OfurNnh/BPh/LxVVvoqie/NK23eTVHACmtB3YVOcLF2Um65ALZVFtGmuAn3E2ZY8k4NI54aINIM0LNPRPNJSYgZEXjBoATBoDtBzSOo0HsCWpFUaQkwnaRGcsnqdMVoImRsY5MEzJloUUGKQUd+8V4AMfNO9HGws0fNAvHBlolhXivwgkwSYMSMPT2bWbxaFRvooze4S5Q5M4x/FwlX6yFfvWntOEq5kRr70Q+tRJc08GU2m0e4las8dpciMc3/wAe3a1SmPZmvL1PwdYw72or3ux+6pnquaPmizsdHm9HwZ1D42KQfRVm99pco+DFB/ExbH6NML7Sxm9Bh3lWIxlLwcYQatUrN2ZkAP8Abf2y7T5B4Eb6LN9Ko/4SJpooyWcejyWwS+LhKf1gX++THxKYLDWHM0EdgSiimgZstrm6qTYXE685G29gLiXpVOcKNTzDRQwZWt0SLixuAb9+nVSEdigylQyCwIBGmXQi404Q7yLDUciKlycoAud5tCasg3uo72AjRJIJIkpNj6Y8sei59wg/temN2Y9y/naUiTpLJVnFbba+TTJ72A9wMZduMdyKD1Ekn2WvKzIVGhQzPctNn88tIZ8pVn4XuCFvxHUIX7VqncVHcv53kFZ3c3diTw7O4DQQWJl1W4du9HsZ5OTo41Ce5QPiZMvJ1PPf+38p3FSSKkffnyHZhwcH/jSfzKn9v+MY8mF4VWHeoPuImiVJKtOHfnyHZhwZN+Sr+TVQ96lfdeUMTybxK7kV/ouPxWm/CQlSNdTPyT6eHg8mxmEqU/4lN0HWykL9rcZUvPZwk5uM5M4arq1FQfOToNfrOWwPpBh3r3F2a2PKSYJM2+P5AHfQr9y1B+NP8Zm9ocnsVRuamHcqPKQZ17yVvlHfaPOmLI0cu8UjzjrEUBHdS7eKpPcCfdLCYKq26k/pUj3zZ3gGT65+EaejXlmWTZNY+QB3svwJk6bDqHxnQdxJ+AmgJjZpL62b4GukguTjLsEeVV9S29pMlGy6SWuCxJtdj2E7hYcJ0S0rYg6r9L8LSH1OJLdlrp4R2R1MJbIoXcBbgLW0tYSacRKrL4pI7oL13PlN6zMatm16HegtXQb3X1iZ4qx3wTTbzhGokuR3zj6Y8v1An4QG2sg84+gfnOAaB8/2SN8M3n+yUois737ZW9gvpJt8ID7YHnIPQT8ZknZg1id9x8fhGKdZMpUJ2alttLxqH0Bfyg/tynxLn6xHumYVBJQo6pSaIpnefaFOqwC9E2tYnxteF+McpM3UXWX8JtEjo1LkedvI7+v398YjqlYgI6LmF1IIO4jdJFomK0OmAokgUGGuGMnTCxOSGoshS47R7f8Af63y1RIO79d44Qkw4knMjfx6xv8A12SHJFqLJFWGqyMMR42o6x8Rw/W6Tqb7orKoQWGojCGIWKglEMCCIawsKHCw1EZZII7FQlEMCCIYjsKI2wdNtWo0yTvJUEnv0ikt4oWKjIZorxwkPm5x2zqojgkSYUoYox2woqGRPvHpPuHxnR+TyM4XpL3P70/3KTIaOY5kZJnYfZ5PCJdmzVNGbTONcxWM7i7OAki4JZWZCysz4Q9UIYdjwmiXDqOEIUx1RZx5DH4/Z7AZwNxvKmSbsoOIEg+Q0735tPsiLNqVl0MYtI8AT3CWaeBqNuptNctMDcoHcAI9o8wspll2JUO8AenX1SenyfPlOPQPzmiIgkQzsWVFbCYNKa5Evqbkk3JO6/Z6JNlhRXibspKhBYaiMIoAGBHgCM9dF8ZgIrCiZTFk4rofYe8SthMalS5psGANjY6jW2o3zo0qF5SViehCtTgwt7j3GTKYb4RgPOHH/wDOMrBCPF3dR3eg8Pd3RuLW4k0y0IQkFOqDpuPUd/8AsdokymIAxDEAGGDAAxCEER47CgooN4oxUcNaMMURJYU5qNiIUhCCQgIVowAtBXxz9EH1sw/DJbQVHTJ+ag/uc/GMB7RQjALRiERBtCJgGACiMUaACJgkwrRiIAAYoVo0BA2iIhRi46+IHpJsB3kkCMBrRWkvNNmVchBa9rjLfLqRrxtrbfYHqMJcMcxR2VCACCT4ynyl3XsdDrcacCCaSYiC0YydaIyZixDAgeKcjEkWAexGVrizcL6i4Ilk4YB0tTILAgrUYFTxsCpYBxw4EBu8PKws5VU9s5eJpm95rMPlVnQlUB1yBcwIN8xB7eKEaHsMp4jALbMl2Qi4c8AbWvuuNdDbv6zMsJtBGVGGxGEdH56g2VxqRwaa3k3txcQpU9Goo6abvrAdXukNbZh4Tm19hvnFSmxR18V1IuO8HQjsMzi5Repo6exvaJN+FvbeBjsKLc4v1h8ZwsDtHGKAKlCi588VGS/bkyNr6Z0jjXYWfKBxC3PrY7/UJ1Zk40zBxp6EDoDvH+u0HgYgzL84f3D4H398e8ITMZJTcHUH/XYRwMkBlZkvruPWN/8AsdhjrVK+ONPOG76w3r7R3QAuAwgZErcRDBgAd4oN4oAc4CPHURg4vbjMDYdRHi/X69UVv16bRgPI0PSfvA/sU/GSESOmNXPWw9iIv4YAG0AwmgmMQ0GFBLQEKImVq+MC8JWwG0icSiFQQ6sgDeLmJBB3HW4A+tEpJuh5XVl81Ba99B8TYe0w3pstiyEAsqXNgAzGyg31FzYd5Eu4+pfLSqFQlTOjWBzLdGK2JO42IvbQ5YDAuwXp1UsyODlXK6lWVjfKG43GuuU2muUmyvVw7IyCoyqHJXNckBgLqpva1wG16wBxhU8OC9rl0K6Mg6IdT0kYjrBFrHTK1+EsYRWLNUphVDXRlIOZXRiM3RBAuO3UZT3w4Z86uVrZKj3zooVslVOgTkILHULrpcAHS8aihWPh0GV3SkKim7IHPTIAsyWIOoYEa2OtjuuRZgKSoKiuhA6KglzSO7JqSzqLa2ucvWYWQOhREZKmVahVicquSTdgzdJCy2Nhu36mStd2KkLSemyuuXp3VhYlScoyHpobjh3SgGfpOq9NwoDOH6BG/JUF8tyCtiPnX03F8MDnqWypa2YNqQbaOD5jAbrnVTuN5EaikM9RnBp5+mgYKEYXzKyA6WtdWJsU7AYq6Wp3q07Otgal1uAG6Na/SYKLBiDe2u8RiBom9Pm1fpHN+7sGTQjOi2UnmzfRr6BhoLZZNkzFVVGBVVJSs5YFCRfXM92UjxhuNgd8fH5lCNVdQoYFnQFWRrAB0zEjIbkEW3Md4vCZQXVrPUW2hAtkNjdgRZWVhoRv3dZsxAB8pc50pNY5kbxb7kqXuNCBbMB2HVbB6IYDNTV73JKOAEJOjAEgKATqGXrvY3MWGLBWekilG6Sqxs4YnpoBax49AkEG400AXOBEDLXBQEnIMqnJ5iZrsCp8k68NLARgLEYYjpZbJ1XuV69ALZfSbd26sRHrbSpBwULVLgBlIZiOp0z6g9YtY6brasK2ck82UXgCePGwsMo7JEkgQ8UUUgocQhBEIQAIQxAEMQFQHN21Q5T1Wup7xwPaLemGlfXKwynh1H6Lce7Q9kcR2UEWIBB3g6g94jAlilfmeqo47L3t6wYoWBCIypY3/Wu+KKc5sSDv/X6Ma/69sUUYDEyOifG+m49TsPhFFAQRjGKKMQJkZEUUAKeKp3E4eNBXK4tdWB11G/iOPD1RRTKXuRa2N9g6pdVemqKrqrDfcBgCLqABx65BjKZpA1s5CtUpmqAq2tpTzqDchh0CddQvXFFOvwZEIVGa9Bc7K6tVBJysrKV6WfewAuCB5AGl5P0nq2FkeiB88OlQNdbDLYdHr3oN/Foo0Ia6io3OsQaagqVuoNOpYMDl6V8yHS9tAYsEtySKfOAkmnVbKTlbXKSxzC27duy8QY8UaAsYXCuq5MyBVJCizMVTzL3AIG4abrDheDzVOkgD1GyDQAk2A80ZADlA0AN9I8UYFE7Xw6C1KlfSwsqqLbrXOtvRK+HxVfLlpoqpfoZjcqvm3B1A3C43WHCKKTKTEBzTksWrMMxuwXogmwF9NNwHCOmDQeTc/ON7943eyKKZ2xk6KALAADqGghRRQQxCIRRRiHEIRRQAIQhFFAAhCBiijAeKKKAj/9k="
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTE261A74YyP9xj-dI_1BU7mVUShQPOZ4tauQ&usqp=CAU"
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFrgG4chJ_awcvKUqCOxAOCN2l6dSrkwdk_w&usqp=CAU"
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ97wMSyKcUqDUJ1G7t2p2QMODRKysfy8hHQ&usqp=CAU"
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/3.webp"
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-6 col-xl-4">
+            <div class="card text-black">
+              <i class="fab fa-apple fa-lg pt-3 pb-1 px-3"></i>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKgzGb9u6n8QBentJfAe658MoP9vXVelSsYg&usqp=CAU"
+                class="card-img-top" alt="Apple Computer" />
+              <div class="card-body">
+                <div class="text-center">
+                  <h5 class="card-title">Believing is seeing</h5>
+                  <p class="text-muted mb-4">Apple pro display XDR</p>
+                </div>
+                <div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro Display XDR</span><span>$5,999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Pro stand</span><span>$999</span>
+                  </div>
+                  <div class="d-flex justify-content-between">
+                    <span>Vesa Mount Adapter</span><span>$199</span>
+                  </div>
+                </div>
+                <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                  <span>Total</span><span>$7,197.00</span>
+                  <br>
+                  <button class="btn btn-light btn-outline-info">Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    </div>
+      </div>
+
+      <!-- footer -->
+      <footer class="footer mt-3">
+      <div class="container bottom_border">
+      <div class="row">
+
+      <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+      <h5 class="headin5_amrc col_white_amrc pt2">Find us</h5>
+      <!--headin5_amrc-->
+      <p class="mb10">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+      <p><i class="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35 </p>
+      <p><i class="fa fa-phone"></i>  +91-9999878398  </p>
+      <p><i class="fa fa fa-envelope"></i> info@example.com  </p>
+      </div>
+      
+      
+      <div class=" col-sm-4 col-md  col-6 col">
+      <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+      <!--headin5_amrc-->
+      <ul class="footer_ul_amrc">
+      <li><a href="http://webenlance.com">Image Rectoucing</a></li>
+      <li><a href="http://webenlance.com">Clipping Path</a></li>
+      <li><a href="http://webenlance.com">Hollow Man Montage</a></li>
+      <li><a href="http://webenlance.com">Ebay & Amazon</a></li>
+      <li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+      <li><a href="http://webenlance.com">Image Cropping</a></li>
+      </ul>
+      <!--footer_ul_amrc ends here-->
+      </div>
+      
+      
+      <div class=" col-sm-4 col-md  col-6 col">
+      <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+      <!--headin5_amrc-->
+      <ul class="footer_ul_amrc">
+      <li><a href="http://webenlance.com">Remove Background</a></li>
+      <li><a href="http://webenlance.com">Shadows & Mirror Reflection</a></li>
+      <li><a href="http://webenlance.com">Logo Design</a></li>
+      <li><a href="http://webenlance.com">Vectorization</a></li>
+      <li><a href="http://webenlance.com">Hair Masking/Clipping</a></li>
+      <li><a href="http://webenlance.com">Image Cropping</a></li>
+      </ul>
+      <!--footer_ul_amrc ends here-->
+      </div>
+      
+      
+      <div class=" col-sm-4 col-md  col-12 col">
+      <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+      <!--headin5_amrc ends here-->
+      
+      <ul class="footer_ul2_amrc">
+      <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
+      <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
+      <li><a href="#"><i class="fab fa-twitter fleft padding-right"></i> </a><p>Lorem Ipsum is simply dummy text of the printing...<a href="#">https://www.lipsum.com/</a></p></li>
+      </ul>
+      <!--footer_ul2_amrc ends here-->
+      </div>
+      </div>
+      </div>
+      
+      
+      <div class="container">
+      <ul class="foote_bottom_ul_amrc">
+      <li><a href="http://webenlance.com">Home</a></li>
+      <li><a href="http://webenlance.com">About</a></li>
+      <li><a href="http://webenlance.com">Services</a></li>
+      <li><a href="http://webenlance.com">Pricing</a></li>
+      <li><a href="http://webenlance.com">Blog</a></li>
+      <li><a href="http://webenlance.com">Contact</a></li>
+      </ul>
+      <!--foote_bottom_ul_amrc ends here-->
+      <p class="text-center">Copyright @2017 | Designed With by <a href="#">Your Company Name</a></p>
+      
+      <ul class="social_footer_ul">
+      <li><a href="http://webenlance.com"><i class="fab fa-facebook-f"></i></a></li>
+      <li><a href="http://webenlance.com"><i class="fab fa-twitter"></i></a></li>
+      <li><a href="http://webenlance.com"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="http://webenlance.com"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+      <!--social_footer_ul ends here-->
+      </div>
+      
+      </footer>
+      
+      
+      
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>   
+</body>
+</html>

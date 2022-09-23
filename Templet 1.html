@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Bootstrap Day 1</title>
+    <style>
+      
+        div.collapse li:hover{
+            background-color:#0c86dd;
+            color: #e3f2fd;
+        }
+        
+    </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+       <!------- nav bar ------>
+      <nav class="navbar bg-info navbar-expand-lg bg-light" style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+       
+          <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Fetures</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Prising</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+  <!-- -----Slider----- -->
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZbyRrSscSqF7ASFFlTsPeWX-UsmmYKZU9uP4j5Cd1wPCJYMo5CzFNFZiw9VNY1S2isnA&usqp=CAU" style="height:15rem; width: auto;" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQBZF51oU8XZ5iespKzLLF4TwBflVw-aqh1InCxyo3IgHZIyoQ9VUvRXC9zFbluecQkVs&usqp=CAU"style="height:15rem; width: auto;" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXTJ_7x41nfJtAdTtje4SbUIqDaeZzz4mogVz7sqhHADqTNdk7OjmLhIUHDwNYbipU8zs&usqp=CAU" style="height:15rem; width: auto;" class="d-block w-100" alt="...">
+          </div>
+          <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">Last updated 3 mins ago</p>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+<!-- -----About------>
+      <div class="carousel-inner row " style="margin:.5em;" >
+        <div class="col-lg-4 text-center">
+            <img class="rounded-circle " style="margin:.5em;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf4NQmhsMEoBccwzVGxrigjzDisIbiN9KiYg&usqp=CAU" alt="">
+            <h4 class="text-center">Type 1</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Fugiat eum soluta sed dolorum excepturi error sunt minima accusamus ab. Cum, officiis architecto amet itaque libero repellat quasi ex facilis illo.</p>
+            <button class="btn btn-success"> Book Now 4521$</button>
+        </div>
+        <div class="col-lg-4 text-center">
+            <img class="rounded-circle" style="margin:.5em;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVefJWKFseoPE018YvHlP7ViHbBtHmHrMTw&usqp=CAU" alt="">
+            <h4 class="text-center">Type 2</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Fugiat eum soluta sed dolorum excepturi error sunt minima accusamus ab. Cum, officiis architecto amet itaque libero repellat quasi ex facilis illo.</p>
+            <button class="btn btn-warning"> Book Now 6521$</button>
+        </div>
+        <div class="col-lg-4 text-center">
+            <img class="rounded-circle" style="margin:.5em;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB0sYRNsS-NnUe78ZS21yD2XYwKpVEdlBH6g&usqp=CAU" alt="">
+            <h4 class="text-center">Type 3</h4>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                Fugiat eum soluta sed dolorum excepturi error sunt minima accusamus ab. Cum, officiis architecto amet itaque libero repellat quasi ex facilis illo.</p>
+            <button class="btn btn-danger"> Book Now 12021$</button>
+        </div>
+      </div>
+    <!-- footer -->
+    <footer class="bg-light text-center text-lg-start">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+      </div>
+    </footer>  
+  </div>
+  </div>
+      
+      
+
+
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>   
+</body>
+</html>
